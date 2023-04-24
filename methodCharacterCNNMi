@@ -1,0 +1,73 @@
+digraph g {
+	graph [nodesep=1 ranksep=2 splines=false]
+	edge [arrowhead=none color="#707070"]
+	subgraph cluster_input {
+		node [fillcolor="black:white" fontcolor=white shape=square style=filled]
+		color=white label="CNN for Character Representation of Methods Using Mi et al. Method
+
+
+
+Input Layer"
+		1 [label="Image
+ 50 x 754 pixels
+Grayscale" fontcolor=white]
+	}
+	conv_2 -> 2
+	1 -> conv_2
+	subgraph cluster_1 {
+		color="#5faad0" style=filled
+		conv_2 [label="Convolutional Layer
+Kernel Size: 2x754
+Filters: 100" shape=square]
+		2 [label="100
+Feature Maps" shape=square]
+	}
+	conv_3 -> 3
+	2 -> conv_3
+	subgraph cluster_2 {
+		color="#5faad0" style=filled
+		conv_3 [label="Convolutional Layer
+Kernel Size: 2x1
+Filters: 100" shape=square]
+		3 [label="100
+Feature Maps" shape=square]
+	}
+	conv_4 -> 4
+	3 -> conv_4
+	subgraph cluster_3 {
+		color="#5faad0" style=filled
+		conv_4 [label="Convolutional Layer
+Kernel Size: 2x1
+Filters: 100" shape=square]
+		4 [label="100
+Feature Maps" shape=square]
+	}
+	4 -> 5
+	subgraph cluster_4 {
+		color=white
+		5 [label="Max Pooling
+Pool Size: 2x1" fillcolor="#8e44ad" fontcolor=white style=filled]
+	}
+	5 -> 6
+	subgraph cluster_5 {
+		color=white
+		6 [label=Flattening fillcolor="#2c3e50" fontcolor=white shape=invtriangle style=filled]
+	}
+	6 -> 7
+	subgraph cluster_6 {
+		color=white
+		7 [label="Dropout Layer" fillcolor="#f39c12" fontcolor=white style=filled]
+	}
+	7 -> 8
+	7 -> 9
+	subgraph cluster_output {
+		node [color="#2ecc71" fontcolor="#2ecc71" shape=circle style=filled]
+		color=white
+		rank=same
+		labeljust=1
+		8 [color="#e74c3c" fontcolor="#e74c3c" shape=circle style=filled]
+		9 [color="#e74c3c" fontcolor="#e74c3c" shape=circle style=filled]
+		label="Output Layer" labelloc=bottom
+	}
+	arrowShape=none
+}
